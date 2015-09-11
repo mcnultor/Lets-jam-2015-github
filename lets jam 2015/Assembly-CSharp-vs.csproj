@@ -53,6 +53,7 @@
      <Compile Include="Assets\Resources\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Resources\Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\Resources\Scripts\Player\PlayerTrigger.cs" />
+     <Compile Include="Assets\Resources\Scripts\UI\DrunkBar.cs" />
      <Compile Include="Assets\Resources\Scripts\UI\MainMenu.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

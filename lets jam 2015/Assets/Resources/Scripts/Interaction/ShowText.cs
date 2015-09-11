@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ShowText : MonoBehaviour
 {
-    public string Text = "";
+    public DrunkText[] Text;
 
     private static List<string> queue = new List<string>();
     private GameObject text;
@@ -18,7 +18,17 @@ public class ShowText : MonoBehaviour
 
     public void Interact(GameObject player)
     {
-        queue.Add(Text);
+        for (int i = 0; i < Text.Length; i++)
+        {
+            if (PlayerStats.Drunk <= 25)
+                queue.Add(Text[i].drunk25);
+            else if (PlayerStats.Drunk <= 50)
+                queue.Add(Text[i].drunk50);
+            else if (PlayerStats.Drunk <= 75)
+                queue.Add(Text[i].drunk75);
+            else if (PlayerStats.Drunk <= 100)
+                queue.Add(Text[i].drunk100);
+        }
         text.transform.FindChild("Text").gameObject.GetComponent<Text>().text = queue[0];
     }
 
@@ -55,4 +65,13 @@ public class ShowText : MonoBehaviour
             text.transform.FindChild("Text").gameObject.GetComponent<Text>().text = queue[0];
         }
     }
+}
+
+[System.Serializable]
+public class DrunkText
+{
+    public string drunk25 = "";
+    public string drunk50 = "";
+    public string drunk75 = "";
+    public string drunk100 = "";
 }

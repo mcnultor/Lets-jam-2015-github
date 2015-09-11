@@ -9,8 +9,32 @@ public class PlayerStats : MonoBehaviour
         Melee = 30
     }
 
-    public static int Drunk = 0;
-    public static int Health = 100;
+    private static int drunk = 0;
+    private static int health = 0;
+
+    public static int Drunk
+    {
+        get
+        {
+            return drunk;
+        }
+        set
+        {
+            drunk = Mathf.Clamp(value, 0, 100);
+        }
+    }
+    public static int Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = Mathf.Clamp(value, 0, 100);
+        }
+    }
+
     public static int CurrentLevel = 0;
     public static int FXVolume = 0;
     public static int MusicVolume = 0;
