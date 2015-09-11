@@ -9,8 +9,11 @@ public class PlayerStats : MonoBehaviour
         Melee = 30
     }
 
-    public static float Drunk = 0;
-    public static float Health = 100;
+    public static int Drunk = 0;
+    public static int Health = 100;
+    public static int CurrentLevel = 0;
+    public static int FXVolume = 0;
+    public static int MusicVolume = 0;
 
     public static float CalculateDamage(WeaponTypes type)
     {
@@ -20,9 +23,9 @@ public class PlayerStats : MonoBehaviour
         switch(type)
         {
             case WeaponTypes.Melee:
-                return ((int)WeaponTypes.Melee) * (Drunk / 38);
+                return ((float)WeaponTypes.Melee) * (Drunk / 38);
             case WeaponTypes.Spell:
-                return ((int)WeaponTypes.Spell) / (Drunk / 50);
+                return ((float)WeaponTypes.Spell) / (Drunk / 50);
             default:
                 return 0;
         }
