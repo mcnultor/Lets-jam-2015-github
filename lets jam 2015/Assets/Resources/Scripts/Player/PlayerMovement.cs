@@ -13,9 +13,10 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+
 		//Basic horizontal movement
 		float move = Input.GetAxis ("Horizontal");
-		GetComponent<Rigidbody2D>().velocity = new Vector2 (move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+		GetComponent<Rigidbody2D>().velocity = new Vector2 ((move * maxSpeed)/(PlayerStats.Drunk +1), GetComponent<Rigidbody2D>().velocity.y);
 
 		if (move > 0 && !facingRight)
 			FlipPlayer ();
