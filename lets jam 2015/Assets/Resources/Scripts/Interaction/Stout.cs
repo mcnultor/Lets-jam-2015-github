@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Beer : MonoBehaviour 
-{
-	private int IncreaseAmount = 2;
+public class Stout : MonoBehaviour {
 
+	private int IncreaseAmount = 4;
+	
 	public void Interact(GameObject player)
 	{
 		PlayerStats.Drunk += IncreaseAmount;
