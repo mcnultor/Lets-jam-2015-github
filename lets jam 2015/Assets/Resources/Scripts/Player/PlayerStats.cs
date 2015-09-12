@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     private static int drunk = 0;
-    private static int health = 0;
+    private static int health = 100;
 
     public static int Drunk
     {
@@ -47,9 +47,9 @@ public class PlayerStats : MonoBehaviour
         switch(type)
         {
             case WeaponTypes.Melee:
-                return ((float)WeaponTypes.Melee) * (Drunk / 38);
+                return 30 + (Drunk / 2.0f);
             case WeaponTypes.Spell:
-                return ((float)WeaponTypes.Spell) / (Drunk / 50);
+                return 50 - (Drunk / 4.0f);
             default:
                 return 0;
         }

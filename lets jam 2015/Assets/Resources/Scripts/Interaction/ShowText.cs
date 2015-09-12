@@ -30,6 +30,8 @@ public class ShowText : MonoBehaviour
                 queue.Add(Text[i].drunk100);
         }
         text.transform.FindChild("Text").gameObject.GetComponent<Text>().text = queue[0];
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
+        GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     private void LateUpdate()
@@ -58,9 +60,12 @@ public class ShowText : MonoBehaviour
     public void NextText()
     {
         if (queue.Count > 0)
-        { 
+        {
             if (queue.Count == 1)
+            {
                 queue.Clear();
+                GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
+            }
             else
             {
                 queue.RemoveAt(0);

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Beer : MonoBehaviour 
 {
-	private int IncreaseAmount = 2;
+	public int IncreaseAmount = 2;
 
 	public void Interact(GameObject player)
 	{

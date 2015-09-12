@@ -9,7 +9,10 @@ public class PlayerTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            InteractObject.SendMessage("Interact", other.gameObject);
+            if (InteractObject != null)
+                InteractObject.SendMessage("Interact", other.gameObject);
+            else
+                Destroy(gameObject);
         }
     }
 }
