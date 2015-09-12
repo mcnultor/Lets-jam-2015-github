@@ -57,12 +57,15 @@ public class ShowText : MonoBehaviour
 
     public void NextText()
     {
-        if (queue.Count == 1)
-            queue.Clear();
-        else
-        {
-            queue.RemoveAt(0);
-            text.transform.FindChild("Text").gameObject.GetComponent<Text>().text = queue[0];
+        if (queue.Count > 0)
+        { 
+            if (queue.Count == 1)
+                queue.Clear();
+            else
+            {
+                queue.RemoveAt(0);
+                text.transform.FindChild("Text").gameObject.GetComponent<Text>().text = queue[0];
+            }
         }
     }
 }
