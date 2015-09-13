@@ -13,6 +13,8 @@ public class PlayerTrigger : MonoBehaviour
                 InteractObject.SendMessage("Interact", other.gameObject);
             else
                 Destroy(gameObject);
+
+            other.gameObject.GetComponent<Animator>().SetInteger("Movment", 0);
         }
     }
 }

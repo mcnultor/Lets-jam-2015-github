@@ -11,6 +11,12 @@ public class CombatSystem : MonoBehaviour
 
     private float textA = 0;
 
+    private void Start()
+    {
+        ((RectTransform)GameObject.FindWithTag("PlayerHealth").transform).localPosition = new Vector3(PlayerStats.Health, 0, 0);
+        ((RectTransform)GameObject.FindWithTag("PlayerHealth").transform).sizeDelta = new Vector2(PlayerStats.Health * 2, 15);
+    }
+
     public void UseSpell()
     {
         int amount = Mathf.RoundToInt(PlayerStats.CalculateDamage(PlayerStats.WeaponTypes.Spell));
@@ -42,9 +48,20 @@ public class CombatSystem : MonoBehaviour
     {
         textA = 1;
         PlayerStats.Health -= damage;
+        ((RectTransform)GameObject.FindWithTag("PlayerHealth").transform).localPosition = new Vector3(PlayerStats.Health, 0, 0);
+        ((RectTransform)GameObject.FindWithTag("PlayerHealth").transform).sizeDelta = new Vector2(PlayerStats.Health * 2, 15);
         Text.GetComponent<TextMesh>().text = "-" + damage;
         if (PlayerStats.Health <= 0)
         {
+            PlayerStats.Health = 100;
+            if (PlayerStats.CurrentLevel != 0)
+            { 
+                while (PlayerStats.CurrentLevel % 10 != 0)
+                    PlayerStats.CurrentLevel--;
+
+                PlayerStats.CurrentLevel++;
+            }
+
             Application.LoadLevel(2);
         }
     }

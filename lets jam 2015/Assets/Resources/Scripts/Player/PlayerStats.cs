@@ -39,6 +39,25 @@ public class PlayerStats : MonoBehaviour
     public static int FXVolume = 0;
     public static int MusicVolume = 0;
 
+    private void Start()
+    {
+        if (Application.loadedLevel == 1)
+        {
+            CurrentLevel++;
+            Debug.Log("Current Level: " + CurrentLevel);
+            if (CurrentLevel > 1)
+                if ((CurrentLevel - 1) % 10 == 0)
+                {
+                    Application.LoadLevel("Tavern");
+                }
+        }
+    }
+
+    public void ChangeDrunk(int amount)
+    {
+        Drunk += amount;
+    }
+
     public static float CalculateDamage(WeaponTypes type)
     {
         if (Random.Range(0, 100) < Drunk)

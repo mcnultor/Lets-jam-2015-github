@@ -47,13 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Resources\Scripts\Enviorment\BackgroundChoser.cs" />
-     <Compile Include="Assets\Resources\Scripts\Enviorment\Checkpoint.cs" />
-     <Compile Include="Assets\Resources\Scripts\Interaction\Beer.cs" />
-     <Compile Include="Assets\Resources\Scripts\Interaction\DwarvenAle.cs" />
-     <Compile Include="Assets\Resources\Scripts\Interaction\DwarvenCoffee.cs" />
+     <Compile Include="Assets\Resources\Scripts\Enviorment\EndLevel.cs" />
+     <Compile Include="Assets\Resources\Scripts\Enviorment\EnemeySpawner.cs" />
      <Compile Include="Assets\Resources\Scripts\Interaction\Enemy.cs" />
      <Compile Include="Assets\Resources\Scripts\Interaction\ShowText.cs" />
-     <Compile Include="Assets\Resources\Scripts\Interaction\Stout.cs" />
      <Compile Include="Assets\Resources\Scripts\Interaction\TextNextButton.cs" />
      <Compile Include="Assets\Resources\Scripts\Player\CombatSystem.cs" />
      <Compile Include="Assets\Resources\Scripts\Player\PlayerMovement.cs" />
