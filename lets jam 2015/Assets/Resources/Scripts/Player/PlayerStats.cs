@@ -47,9 +47,9 @@ public class PlayerStats : MonoBehaviour
         switch(type)
         {
             case WeaponTypes.Melee:
-                return 30 + (Drunk / 2.0f);
+                return 30.0f + ((float)Drunk / 2.0f);
             case WeaponTypes.Spell:
-                return 50 - (Drunk / 4.0f);
+                return 50.0f - ((float)Drunk / 4.0f);
             default:
                 return 0;
         }

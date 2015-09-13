@@ -3,8 +3,13 @@ using System.Collections;
 
 public class CombatSystem : MonoBehaviour
 {
+    public GameObject Text;
     public GameObject[] Buttons;
+
+    [System.NonSerialized]
     public GameObject Enemy;
+
+    private float textA = 0;
 
     public void UseSpell()
     {
@@ -35,10 +40,21 @@ public class CombatSystem : MonoBehaviour
 
     public void DoDamage(int damage)
     {
+        textA = 1;
         PlayerStats.Health -= damage;
+        Text.GetComponent<TextMesh>().text = "-" + damage;
         if (PlayerStats.Health <= 0)
         {
             Application.LoadLevel(2);
+        }
+    }
+
+    private void Update()
+    {
+        if (textA >= 0)
+        {
+            textA -= Time.deltaTime;
+            Text.GetComponent<TextMesh>().color = new Color(1.0f, 0.0f, 0.0f, textA);
         }
     }
 }

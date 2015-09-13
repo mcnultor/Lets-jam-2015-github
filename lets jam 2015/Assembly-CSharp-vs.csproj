@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Resources\Scripts\Enviorment\BackgroundChoser.cs" />
      <Compile Include="Assets\Resources\Scripts\Enviorment\Checkpoint.cs" />
      <Compile Include="Assets\Resources\Scripts\Interaction\Beer.cs" />
      <Compile Include="Assets\Resources\Scripts\Interaction\DwarvenAle.cs" />
