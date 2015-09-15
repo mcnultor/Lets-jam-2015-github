@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour {
 	public float maxSpeed = 10f;
 	private bool facingRight = true;
 
+    public AudioClip[] footsteps;
+
     private void FixedUpdate()
     {
         //Basic horizontal movement
@@ -40,4 +42,11 @@ public class PlayerMovement : MonoBehaviour {
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    public void PlayFootSteps()
+    {
+        GetComponent<AudioSource>().volume = PlayerStats.FXVolume / 100.0f;
+        GetComponent<AudioSource>().clip = footsteps[Random.Range(0, footsteps.Length)];
+        GetComponent<AudioSource>().Play();
+    }
 }

@@ -3,8 +3,11 @@ using System.Collections;
 
 public class TextNextButton : MonoBehaviour
 {
+    [System.NonSerialized]
+    public GameObject textMaker;
+
     public void ButtonPressed()
     {
-        GameObject.FindWithTag("Text Maker").GetComponent<ShowText>().NextText();
+        textMaker.GetComponent<ShowText>().NextText();
     }
 }

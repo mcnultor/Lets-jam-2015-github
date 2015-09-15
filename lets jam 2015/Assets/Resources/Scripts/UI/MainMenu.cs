@@ -6,50 +6,31 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject Resolution;
     public GameObject Quality;
+    public GameObject Music;
+    public GameObject FX;
 
     private int currentResolution = 0;
-    private int music = 0;
-    private int fx = 0;
 
     private void Start()
     {
-        if (File.Exists("Settings.sav"))
-        {
-            int qualityLevel = 0;
-            TextReader read = new StreamReader("Settings.sav");
-            if (!int.TryParse(read.ReadLine(), out PlayerStats.FXVolume))
-                Debug.Log("Couldn't Load FX Volume");
-            if (!int.TryParse(read.ReadLine(), out PlayerStats.MusicVolume))
-                Debug.Log("Couldn't Load Music Volume");
-
-            if (!int.TryParse(read.ReadLine(), out qualityLevel))
-                Debug.Log("Couldn't Load Quality Settings");
-            else
-                QualitySettings.SetQualityLevel(qualityLevel);
-
-            if (!int.TryParse(read.ReadLine(), out currentResolution))
-                Debug.Log("Couldn't Load Resolution Settings");
-
-            read.Close();
-            Screen.SetResolution(Screen.resolutions[currentResolution].width, Screen.resolutions[currentResolution].height, true);
-        }
-        else
-            Screen.SetResolution(Screen.resolutions[Screen.resolutions.Length - 1].width, Screen.resolutions[Screen.resolutions.Length - 1].height, true);
-
-        Quality.GetComponent<Text>().text = QualitySettings.GetQualityLevel().ToString();
+        Music.GetComponent<Slider>().value = (float)PlayerStats.MusicVolume / 100.0f;
+        FX.GetComponent<Slider>().value = (float)PlayerStats.FXVolume / 100.0f;
+        currentResolution = Screen.resolutions.Length - 1;
+        Resolution.GetComponent<Text>().text = Screen.resolutions[currentResolution].width + "X" + Screen.resolutions[currentResolution].height;
+        Screen.SetResolution(Screen.resolutions[currentResolution].width, Screen.resolutions[currentResolution].height, true);
     }
 
     public void Play()
     {
-        Application.LoadLevel(1);
+        Application.LoadLevel("Intro");
     }
 
     public void ChangeResolution(int x)
     {
         if (currentResolution + x < Screen.resolutions.Length && currentResolution > 0)
         {
-            Resolution.GetComponent<Text>().text = Screen.resolutions[currentResolution].width + "X" + Screen.resolutions[currentResolution].height;
             currentResolution += x;
+            Resolution.GetComponent<Text>().text = Screen.resolutions[currentResolution].width + "X" + Screen.resolutions[currentResolution].height;
         }
     }
 
@@ -64,26 +45,17 @@ public class MainMenu : MonoBehaviour
 
     public void FXVolume(float x)
     {
-        fx = Mathf.RoundToInt(x * 100);
+        PlayerStats.FXVolume = Mathf.RoundToInt(x * 100);
     }
 
     public void MusicVolume(float x)
     {
-        music = Mathf.RoundToInt(x * 100);
+        PlayerStats.MusicVolume = Mathf.RoundToInt(x * 100);
     }
 
     public void Apply()
     {
         Screen.SetResolution(Screen.resolutions[currentResolution].width, Screen.resolutions[currentResolution].height, true);
-        PlayerStats.FXVolume = fx;
-        PlayerStats.MusicVolume = music;
-
-        TextWriter write = new StreamWriter("Settings.sav");
-        write.WriteLine(fx);
-        write.WriteLine(music);
-        write.WriteLine(QualitySettings.GetQualityLevel());
-        write.WriteLine(currentResolution);
-        write.Close();
     }
 
     public void Quit()

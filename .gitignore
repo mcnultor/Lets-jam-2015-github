@@ -1,6 +1,12 @@
 # UNITY
 Library/
 Temp/
+exe/
+*.csproj
+*.sln
+*.userprefs
+.vs/
+
 
 
 # Windows image file caches

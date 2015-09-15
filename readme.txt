@@ -1,0 +1,3 @@
+The game is about about a Dwarf(Drinkur) who descovers he has magical powers after he can't afford his weekly beer. This new found power is achieved by being sober, so he goes on a quest to the Elf homeworld to find out more. Throughout the game alcohol is available to the player that changes his interactions with characters he meets. Although this function wasn't fully finished.
+
+The game is to promote drinking in moderation as opposed to binge drinking, as the best combat stats in the game is achieved by a small amount of alcohol as opposed to a lot.

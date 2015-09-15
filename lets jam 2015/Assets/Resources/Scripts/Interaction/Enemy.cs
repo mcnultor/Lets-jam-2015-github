@@ -1,21 +1,37 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public GameObject Text;
-    public int Health = 100;
+    public int MaxHealth = 100;
+    
     public int MaxDamage = 20;
     public int MinDamage = 10;
 
     private float textA = 0;
     private GameObject player;
     private GameObject EnemeyHealth;
+    private int health = 100;
+    public int Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = Mathf.Clamp(value, 0, 100);
+        }
+    }
 
     private void Start()
     {
+        health = MaxHealth;
         EnemeyHealth = GameObject.FindWithTag("EnemyHealth");
-        EnemeyHealth.SetActive(false);
+        ((RectTransform)EnemeyHealth.transform).localPosition = new Vector3(-110, 0, 0);
+        ((RectTransform)GameObject.FindWithTag("EnemyHealthText").transform).localPosition = new Vector3(-130, -25, 0);
+        GameObject.FindWithTag("EnemyHealthText").GetComponent<Text>().text = Health + "/" + MaxHealth;
     }
 
     private void Interact(GameObject player)
@@ -34,8 +50,9 @@ public class Enemy : MonoBehaviour
         textA = 1.0f;
         Text.GetComponent<TextMesh>().text = "-"  + damage;
         Health -= damage;
-        ((RectTransform)EnemeyHealth.transform).localPosition = new Vector3(-Health, 0, 0);
+        ((RectTransform)EnemeyHealth.transform).localPosition = new Vector3(-Health - 10, 0, 0);
         ((RectTransform)EnemeyHealth.transform).sizeDelta = new Vector2(Health * 2, 15);
+        GameObject.FindWithTag("EnemyHealthText").GetComponent<Text>().text = Health + "/" + MaxHealth;
         if (Health <= 0)
         {
             player.GetComponent<CombatSystem>().Enemy = null;
