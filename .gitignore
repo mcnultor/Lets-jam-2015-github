@@ -6,7 +6,8 @@ exe/
 *.sln
 *.userprefs
 .vs/
-
+bin/
+obj/
 
 
 # Windows image file caches

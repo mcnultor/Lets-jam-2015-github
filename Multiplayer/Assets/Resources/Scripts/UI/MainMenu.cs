@@ -5,7 +5,6 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject ResolutionText, MusicSlider, FXSlider;
 
-
     public void Start()
     {
         Settings.Display.Resolution = Screen.resolutions.Length - 1;
@@ -36,7 +35,7 @@ public class MainMenu : MonoBehaviour
 
     public void Connect()
     {
-
+        NetworkManager.Connect("127.0.0.1", 25565);
     }
 
     public void ApplyResolution()

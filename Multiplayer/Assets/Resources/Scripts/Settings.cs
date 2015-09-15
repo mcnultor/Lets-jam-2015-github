@@ -7,7 +7,7 @@ public enum WeaponType
     Spell
 }
 
-public class Settings : MonoBehaviour
+public class Settings
 {
     public class Display
     {
@@ -95,5 +95,12 @@ public class Settings : MonoBehaviour
             else
                 return -2;
         }
+    }
+
+    public class Network
+    {
+        public static string Version = "0.0.1";
+        public static string ID = "";
+        public static string Username = "";
     }
 }
